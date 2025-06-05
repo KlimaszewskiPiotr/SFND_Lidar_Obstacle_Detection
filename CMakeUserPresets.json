@@ -1,0 +1,20 @@
+{
+    "version": 2,
+    "configurePresets": [
+        {
+            "name": "default",
+            "inherits": "vcpkg",
+            "environment": {
+                "VCPKG_ROOT": "C:\\Repositiories\\vcpkg"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "CustomBuildPreset",
+            "description": "",
+            "displayName": "",
+            "configurePreset": "default"
+        }
+    ]
+}
