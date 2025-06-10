@@ -1,6 +1,5 @@
 #include <unordered_set>
 #include "../processPointClouds.h"
-#include "../processPointClouds.cpp"
 
 std::unordered_set<int> Ransac3D(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud, int maxIterations, float distanceTol)
 {
@@ -39,7 +38,7 @@ std::unordered_set<int> Ransac3D(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud, int 
 		a = cross(0);
 		b = cross(1);
 		c = cross(2);
-        d = -(cross(0)*x1 + cross(1)*y1 + cross(3)*z1);
+        d = -(cross(0)*x1 + cross(1)*y1 + cross(2)*z1);
 
 		for(int index = 0;index < cloud->points.size();++index)
 		{
