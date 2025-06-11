@@ -1,5 +1,4 @@
 // PCL lib Functions for processing point clouds 
-
 #ifndef PROCESSPOINTCLOUDS_H_
 #define PROCESSPOINTCLOUDS_H_
 
@@ -19,7 +18,7 @@
 #include <chrono>
 #include "render/box.h"
 #include <boost/filesystem.hpp>
-//#include "ransac/ransac3d.cpp"
+#include "ransac/ransac3d.h"
 template<typename PointT>
 class ProcessPointClouds {
 public:
@@ -46,6 +45,10 @@ public:
     typename pcl::PointCloud<PointT>::Ptr loadPcd(std::string file);
 
     std::vector<boost::filesystem::path> streamPcd(std::string dataPath);
+
+    std::pair<typename pcl::PointCloud<PointT>::Ptr,typename pcl::PointCloud<PointT>::Ptr> RansacPlane(typename pcl::PointCloud<PointT>::Ptr cloud,int maxIterations,float distanceThreshold);
   
 };
+
+
 #endif /* PROCESSPOINTCLOUDS_H_ */

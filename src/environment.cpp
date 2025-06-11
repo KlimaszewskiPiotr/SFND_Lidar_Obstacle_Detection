@@ -53,7 +53,7 @@ void simpleHighway(pcl::visualization::PCLVisualizer::Ptr& viewer)
     //renderPointCloud(viewer,inputCloud,"inputCloud");  
 
     ProcessPointClouds<pcl::PointXYZ>* pointProcessor = new ProcessPointClouds<pcl::PointXYZ>();
-    std::pair<pcl::PointCloud<pcl::PointXYZ>::Ptr,pcl::PointCloud<pcl::PointXYZ>::Ptr> segmentedCloud = pointProcessor->SegmentPlane(inputCloud,100,0.2);
+    std::pair<pcl::PointCloud<pcl::PointXYZ>::Ptr,pcl::PointCloud<pcl::PointXYZ>::Ptr> segmentedCloud = pointProcessor->RansacPlane(inputCloud,100,0.2);
     renderPointCloud(viewer,segmentedCloud.first,"ObstaclesCloud",Color(1,0,0));
     renderPointCloud(viewer,segmentedCloud.second,"PlaneCloud",Color(0,1,0));
     // TODO:: Create point processor
