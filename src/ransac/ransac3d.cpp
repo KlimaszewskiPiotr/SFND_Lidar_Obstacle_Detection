@@ -33,7 +33,8 @@ std::unordered_set<int> Ransac(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud, int ma
         Eigen::Vector3d v1(x2-x1,y2-y1,z2-z1);
         Eigen::Vector3d v2(x3-x1,y3-y1,z3-z1);
         Eigen::Vector3d cross = v1.cross(v2);
-    
+
+		
     
 
 		float a,b,c,d;
