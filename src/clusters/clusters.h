@@ -48,7 +48,9 @@ struct KdTree
 	void insert(pcl::PointXYZ point, int id);
 	void insertHelper(Node** node, pcl::PointXYZ point, int id, int depth);
 	std::vector<int> search(pcl::PointXYZ target, float distanceTol);
-	void searchHelper(pcl::PointXYZ target, float distanceTol, Node *node, std::vector<int>& ids,int depth);
+	void searchHelper(std::vector<int>& ids, pcl::PointXYZ target,float distance, Node* node, int depth);
 };
+std::vector<std::vector<int>> euclideanCluster(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud,KdTree* tree, float distanceTo, int min, int max);
+void proximity(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud, std::vector<int>& cluster, std::vector<bool>& processedPoints, int id, KdTree* tree, float distanceTo);
 
 #endif
