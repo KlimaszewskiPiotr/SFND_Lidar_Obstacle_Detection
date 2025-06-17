@@ -11,15 +11,14 @@
 #include <pcl/common/transforms.h>
 #include <vector>
 
-
 struct Node
 {
     int id;
-    pcl::PointXYZ point;
+    pcl::PointXYZI point;
     Node* left;
     Node* right;
 
-    Node(pcl::PointXYZ arr, int setId)
+    Node(pcl::PointXYZI arr, int setId)
 	:	point(arr), id(setId), left(NULL), right(NULL)
 	{}
 
@@ -30,7 +29,6 @@ struct Node
 	}
 
 };
-
 struct KdTree
 {
     Node* root;
@@ -45,12 +43,13 @@ struct KdTree
 	}
 
 
-	void insert(pcl::PointXYZ point, int id);
-	void insertHelper(Node** node, pcl::PointXYZ point, int id, int depth);
-	std::vector<int> search(pcl::PointXYZ target, float distanceTol);
-	void searchHelper(std::vector<int>& ids, pcl::PointXYZ target,float distance, Node* node, int depth);
+	void insert(pcl::PointXYZI point, int id);
+	void insertHelper(Node** node, pcl::PointXYZI point, int id, int depth);
+	std::vector<int> search(pcl::PointXYZI target, float distanceTol);
+	void searchHelper(std::vector<int>& ids, pcl::PointXYZI target,float distance, Node* node, int depth);
 };
-std::vector<std::vector<int>> euclideanCluster(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud,KdTree* tree, float distanceTo, int min, int max);
-void proximity(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud, std::vector<int>& cluster, std::vector<bool>& processedPoints, int id, KdTree* tree, float distanceTo);
+
+std::vector<std::vector<int>> euclideanCluster(pcl::PointCloud<pcl::PointXYZI>::Ptr cloud, typename KdTree* tree, float distanceTo, int min, int max);
+void proximity(pcl::PointCloud<pcl::PointXYZI>::Ptr cloud, std::vector<int>& cluster, std::vector<bool>& processedPoints, int id, typename KdTree* tree, float distanceTo);
 
 #endif
